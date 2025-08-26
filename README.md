@@ -4,11 +4,11 @@ lecture will build on the work done in the previous assignment(s).  Ultimately, 
 presented in Intermediate Software Development.
 
 ## Author
-[Your name]
+ACE Faculty
 
 ## Module
-[use this section to list the module number and general topic of the demonstration.]
+Module 1 - Object Oriented programming and Unit Testing. 
 
 ## Demonstration
-[use this section to list notes that may help when referring back to the demonstration.]
-
+Unit testing was helpful to ensure my code works as expected. Please remember to 
+name Class Definition with Test. 
