@@ -10,8 +10,8 @@ class Department(Enum):
     To use:  Department.DEPARTMENT_NAME  
     Example: Department.MEDICINE
     """
-    COMPUTER_SCIENCE = auto()
-    EDUCATION = auto()
+    COMPUTER_SCIENCE = auto() # COMPUTER_SCIENCE = 1
+    EDUCATION = auto() # EDUCATION = 2
     ENGINEERING = auto()
     MEDICINE = auto()
 

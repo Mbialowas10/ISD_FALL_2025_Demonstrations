@@ -17,9 +17,42 @@ class Course:
 
     def __init__(self, name:str, department:Department, credit_hours: int):
 
-        if len(name.strip())> 0:
+        if len(name.strip())> 0: # strip removes any space 
+                                #before and after the word
             self.__name = name # name mangling _ClassName.__name
         else:
             raise ValueError("Name cannot be blank.")
+        
+        if isinstance(department, Department):
+            self.__department = department
+        else:
+            raise ValueError("Deparment is invalid")
+        if isinstance(credit_hours, int):
+            self.__credit_hours = credit_hours
+        else:
+            raise ValueError("Credit hours must be an int type")
+    
+    @property
+    def name(self) -> str:
+        return self.__name
+    
+    @property
+    def department(self) -> Department:
+        return self.__department
+    
+    @property
+    def credit_hours(self) -> int:
+        return self.__credit_hours
+    
+    def __str__(self) ->str:
+        return (f"Course: {self.__name}"
+                + f"\nDepartment: "+
+                f"{self.__department.name.replace('_',' ').title()}"
+                + f"\nCredit Hours: {self.__credit_hours}")
+    
+
+    
+
+    
         
        
