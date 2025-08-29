@@ -25,7 +25,7 @@ class Course:
         if isinstance(department, Department):
             self.__department = department
         else:
-            raise ValueError("Deparment is invalid.")
+            raise ValueError("Department is invalid.")
         
         if isinstance(credit_hours, int):
             self.__credit_hours = credit_hours
@@ -47,7 +47,7 @@ class Course:
     def __str__(self) -> str:
 
         return (f"Course: {self.__name}"
-                    f"\nDepartment:"
-                     f"{self.__department.name.replace('-',' ').title()}"
+                    f"\nDepartment: "
+                     f"{self.__department.name.replace('_',' ').title()}"
                      + f"\nCredit Hours: {self.__credit_hours}"
                 )
