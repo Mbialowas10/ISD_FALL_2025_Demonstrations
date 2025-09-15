@@ -4,6 +4,8 @@ __credits__ = ""
 
 from student.student import Student
 from department.department import Department
+from course import *
+
 
 
 def main():
@@ -22,23 +24,39 @@ def main():
     #1. Create an instance of the Course class with valid inputs.
     # If an exception occurs, print the exception instance.
     # Comment out once tested.
+    try:
+        course = Course("Skiing", Department.COMPUTER_SCIENCE, 8, 800, 2)
+    except ValueError as e:
+        print(e)
 
     
     #2. Define a Lecture Course with a capacity of 20 and a current enrollment of 19
     # Use any valid values for the other parameters.
     # print the object
+    try:
+        valid_lecture_course = LectureCourse("ISD", Department.COMPUTER_SCIENCE, 6, 20,19, "P414")
+        print(valid_lecture_course)
+    except ValueError as e:
+        print(e)
 
 
 
     #3. Define a Lab Course with a capacity of 20 and a current enrollment of 8
     # Use any valid values for the other parameters.
     # print the object.
+    try:
+        chemistry = LabCourse("Chemistry", Department.COMPUTER_SCIENCE, 6,20,8, "Googles")
+        print(chemistry)
+    except ValueError as e:
+        print(e)
 
 
 
     #4. Using a loop, enroll the students from the students list above
     # into the lecture course defined above.  Print the message returned
     # from the enroll_student method.
+    for student in students:
+        print(valid_lecture_course.enroll_student(student))
 
 
 
