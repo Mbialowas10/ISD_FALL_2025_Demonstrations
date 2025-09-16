@@ -9,6 +9,10 @@ ACE Faculty
 ## Module
 Module 1 - Object Oriented programming and Unit Testing. 
 
+Module 2 - Encapusalation, Abstraction, Inheritence, Polymorphism.
+
 ## Demonstration
 Unit testing was helpful to ensure my code works as expected. Please remember to 
 name Class Definition with Test. 
+
+We will see what I break today... 
