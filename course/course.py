@@ -58,6 +58,7 @@ class Course(ABC):
     def credit_hours(self) -> int:
         return self.__credit_hours
     
+    @abstractmethod
     def enroll_student(self, student: Student) -> str:
         """
         Enrolls a student in a course if capacity allows

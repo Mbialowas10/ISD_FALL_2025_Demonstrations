@@ -16,7 +16,7 @@ def main():
         name = "Student" + str(i)
         student_number += 1 
         try:
-            student = Student(student_number, name, Department.COMPUTER_SCIENCE )
+            student = Student(student_number, name, Department.COMPUTER_SCIENCE)
             students.append(student)
         except ValueError as e:
             print(e)
@@ -24,10 +24,10 @@ def main():
     #1. Create an instance of the Course class with valid inputs.
     # If an exception occurs, print the exception instance.
     # Comment out once tested.
-    try:
-        course = Course("Skiing", Department.COMPUTER_SCIENCE, 8, 800, 2)
-    except ValueError as e:
-        print(e)
+    # try:
+    #     course = Course("Skiing", Department.COMPUTER_SCIENCE, 8, 800, 2)
+    # except ValueError as e:
+    #     print(e)
 
     
     #2. Define a Lecture Course with a capacity of 20 and a current enrollment of 19
@@ -63,6 +63,8 @@ def main():
     #5. Using a loop, enroll the students from the students list above
     # into the lab course defined above.  Print hte message returned from 
     # the enroll_student method.
+    for student in students:
+        print(chemistry.enroll_student(student))
 
 
 

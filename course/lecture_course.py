@@ -28,10 +28,10 @@ class LectureCourse(Course):
         buffer = int(self._capacity * .10)
         if self._current_enrollment < (self._capacity + buffer):
             self._current_enrollment += 1
-            message += (f" has been successfully enrolled in" 
+            message += (f" has been successfully enrolled in " 
             + f"{self.name}.")
         else:
-            message += (f" HAS NOT BEEN ENROLLED in LECTURE" 
+            message += (f" HAS NOT BEEN ENROLLED in LECTURE " 
             + f"{self.name} due to insufficient capacity.")
 
         return message
