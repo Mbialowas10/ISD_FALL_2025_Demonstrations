@@ -2,7 +2,7 @@ __author__ = "Ace Faculty"
 __version__ = "1.0.0"
 
 from patterns.decorator.student_decorator import StudentDecorator
-class CouncilDecorator(StudentDecoractor):
+class CouncilDecorator(StudentDecorator):
 
     """
     Decorator to be applie to student objects for students who

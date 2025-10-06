@@ -5,6 +5,8 @@ __credits__ = ""
 from student.student import Student
 from department.department import Department
 from course import *
+from patterns.decorator import *
+
 
 def main():
     # Given students populated into a list.
@@ -28,6 +30,16 @@ def main():
         print(f"\n{str(student)}") 
 
         ### DECORATOR ###
+        print(
+            "Original Grade Point Average:",
+            students[0].grade_point_average
+            )
+        
+        volunteer_student= VolunteerDecorator(students[0])
+        print(
+            "GPA with volunteer boost: ",
+            volunteer_student.grade_point_average  
+              )
     
             
 if __name__ == "__main__":
