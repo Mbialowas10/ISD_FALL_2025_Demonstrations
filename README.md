@@ -10,6 +10,8 @@ ACE Faculty
 Module 1 - Object Oriented programming and Unit Testing. 
 Module 2 - Inheritenance, Abstraction, Encapuslation, Polymorphism, OH 
 My!
+Module 3 -Design Patterns: Singleton and Decorator. Learning to 
+apply these patterns.
 
 
 ## Demonstration
