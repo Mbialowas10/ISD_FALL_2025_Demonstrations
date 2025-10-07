@@ -5,6 +5,7 @@ __version__ = "1.0.0"
 from patterns.decorator.student_decorator import StudentDecorator
 class CouncilDecorator(StudentDecorator):
 
+    @property
     def grade_point_average(self) -> float:
 
         grade_point_average = super().grade_point_average
@@ -18,6 +19,6 @@ class CouncilDecorator(StudentDecorator):
 
         for average in increases:
             if grade_point_average >= average:
-                increase = increase[average]
+                increase = increases[average]
                 break
         return grade_point_average + increase

@@ -42,13 +42,7 @@ def main():
         volunteer_and_council_student = VolunteerDecorator(CouncilDecorator(students[0]))
         print("GPA with volunteer and council",
               volunteer_and_council_student.grade_point_average)
-<<<<<<< Updated upstream
-
-        
-
-=======
     
->>>>>>> Stashed changes
             
 if __name__ == "__main__":
     main()
