@@ -40,6 +40,15 @@ def main():
             "GPA with volunteer boost: ",
             volunteer_student.grade_point_average  
               )
+        
+        council_student = CouncilDecorator(students[0])
+        print("GPA with student council boast: ",
+              council_student.grade_point_avaerage)
+        
+        volunteer_and_council_student = VolunteerDecorator(CouncilDecorator(students[0]))
+        print("GPA with volunteer and council",
+              volunteer_and_council_student.grade_point_average)
+
     
             
 if __name__ == "__main__":
