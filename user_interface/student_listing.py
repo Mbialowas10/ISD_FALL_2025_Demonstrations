@@ -30,6 +30,7 @@ class StudentListing(Listing):
         self.student_table.setRowCount(len(self.students))
 
         for student in self.students:
+            
             student_number_item = QTableWidgetItem(str(student.student_number))
             name_item = QTableWidgetItem(student.name)
             grade_point_average_item = QTableWidgetItem(f"{student.grade_point_average:.2f}")
@@ -45,11 +46,11 @@ class StudentListing(Listing):
             # advance row for next record
             row += 1
 
-            self.student_table.resizeColumnsToContents
+        self.student_table.resizeColumnsToContents
 
-            # connecting cellclicked to on_select_student method
-            # signal connected to slot
-            self.student_table.cellClicked.connect(self.__on_select_student)
+        # connecting cellclicked to on_select_student method
+        # signal connected to slot
+        self.student_table.cellClicked.connect(self.__on_select_student)
 
 
     @Slot(int,int)
@@ -65,6 +66,9 @@ class StudentListing(Listing):
         name = self.student_table.item(row,1).text()
 
         calculator = GradePointAverageCalculator(student_number,name)
+        # receive signal
+        calculator.new_gpa.connect(self.__update_gpa)
+        
         calculator.exec_()
 
     def __update_gpa(self, student_number: str, gpa: float):
@@ -75,4 +79,6 @@ class StudentListing(Listing):
             student_number (str): The impacted student number.
             gpa (float): The updated gpa value.
         """
-        pass
+        for row in range(self.student_table.rowCount()):
+            if self.student_table.item(row,0).text() == student_number:
+                self.student_table.item(row,2).setText(f"{gpa:.2f}")
