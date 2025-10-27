@@ -5,10 +5,13 @@ from PySide6.QtCore import Qt, Slot
 from student.student import Student
 from department.department import Department
 
+
 # Required
+from .grade_point_average_calculator import GradePointAverageCalculator
+# from grade_point_average_calculator import Listing
 
-
-class StudentListing():
+from demo_superclasses import *
+class StudentListing(Listing):
     """
     A window which displays student data.
     Inherited from Listing which provides the gui design.
@@ -17,6 +20,7 @@ class StudentListing():
         """
         Initialize the window.
         """
+        super().__init__()
 
         #Given
         self.students = []
@@ -25,9 +29,36 @@ class StudentListing():
         self.students.append(Student("Paul Thompson", Department.COMPUTER_SCIENCE))
         self.students.append(Student("Suzanne Marchand", Department.EDUCATION))
         
+        row =0 
+        self.student_table.setRowCount(len(self.students))
+
+        for student in self.students:
+            student_number_item = (
+                QTableWidgetItem(str(student.student_number))
+            )
+            name_item = QTableWidgetItem(student.name)
+            grade_point_average_item = (
+                QTableWidgetItem(f"{student.grade_point_average:.2f}")
+            )
+
+            # align text
+            grade_point_average_item.setTextAlignment(Qt.AlignRight)
+
+            # place items in table
+            self.student_table.setItem(row, 0, student_number_item)
+            self.student_table.setItem(row, 1, name_item)
+            self.student_table.setItem(row, 2, grade_point_average_item)
+
+            # increament the counter
+            row += 1
+        
+        self.student_table.resizeColumnsToContents()
+
+        # example of a signal
+        self.student_table.cellClicked.connect(self.__on_select_student)
 
 
-    
+    @Slot(int,int)    
     def __on_select_student(self, row: int, column: int):
         """
         Obtain values from a clicked row.
@@ -36,7 +67,15 @@ class StudentListing():
             row (int): Row that has been clicked on.
             column(int): Column that has been clicked on.
         """
-        pass
+        # obtain value from clicked row....
+        student_number = self.student_table.item(row,0).text()
+        name = self.student_table.item(row, 1).text()
+
+        calculator = GradePointAverageCalculator(student_number, name)
+        #receive the signal
+        calculator.new_gpa.connect(self.__update_gpa)
+
+        calculator.exec_()
 
     def __update_gpa(self, student_number: str, gpa: float):
         """
@@ -44,6 +83,8 @@ class StudentListing():
         other window sends a signal upon updating, and this slot receives the signal.
         args:
             student_number (str): The impacted student number.
-            gpa (float): The updated gpa value.
+            gpa (float;;): The updated gpa value.
         """
-        pass
+        for row in range(self.student_table.rowCount()):
+            if self.student_table.item(row,0).text() == student_number:
+                self.student_table.item(row, 2).setText(f"{gpa:.2f}")
