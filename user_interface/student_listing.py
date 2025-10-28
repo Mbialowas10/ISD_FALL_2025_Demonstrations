@@ -68,8 +68,10 @@ class StudentListing(Listing):
         name = self.student_table.item(row,1).text()
 
         calculator = GradePointAverageCalculator(student_number, name)
+        #receive signal
+        calculator.new_gpa.connect(self.__update_gpa)
         calculator.exec_()
-        
+
     def __update_gpa(self, student_number: str, gpa: float):
         """
         Updates the GPA value based on updates made in another window. The 
@@ -78,4 +80,6 @@ class StudentListing(Listing):
             student_number (str): The impacted student number.
             gpa (float): The updated gpa value.
         """
-        pass
+        for row in range(self.student_table.rowCount()):
+            if self.student_table.item(row,0).text() == student_number:
+                self.student_table.item(row,2).setText(f"{gpa:.2f}")
