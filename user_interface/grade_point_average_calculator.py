@@ -1,9 +1,10 @@
 # GIven Imports
 from PySide6.QtWidgets import QMessageBox
 from PySide6.QtCore import Slot, Signal
+from demo_superclasses.gpa_window import GPAWindow
 
 
-class GradePointAverageCalculator():
+class GradePointAverageCalculator(GPAWindow):
     """
     A window that allows for GradePointAverage to be calculated.
     Inherited from GPAWindow which provides the gui design.
@@ -16,6 +17,7 @@ class GradePointAverageCalculator():
             student_number (str):  The student number of the student being displayed.
             name (str): The name of the student being displayed.
         """
+        super().__init__()
 
         self.GRADE_LOOKUP = {"A+": 4.5, "A": 4.0, "B+": 3.5, "B": 3.0, 
                             "C+": 2.5, "C": 2, "D": 1, "F": 0}

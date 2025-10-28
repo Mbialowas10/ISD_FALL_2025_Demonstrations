@@ -10,6 +10,7 @@ ACE Faculty
 Module 1 - Object Oriented programming and Unit Testing. 
 
 Module 2 - Encapusalation, Abstraction, Inheritence, Polymorphism.
+Module 4 - Integrating a GUI (PySide6) to track student GPA.
 
 ## Demonstration
 Unit testing was helpful to ensure my code works as expected. Please remember to 
